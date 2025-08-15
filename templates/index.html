@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Lấy Key truy cập</title>
+  <style>
+    body{font-family:system-ui,Arial;background:#0b1020;color:#e8ecf1;margin:0;padding:24px}
+    .card{background:#121831;border:1px solid #2a3356;border-radius:16px;padding:16px;max-width:720px}
+    a,button{color:#fff;background:#4c7eff;border:none;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;display:inline-block}
+    .muted{opacity:.85}
+    input{width:100%;padding:10px;border-radius:10px;border:1px solid #2a3356;background:#0b1020;color:#e8ecf1}
+    .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🔐 Xin chào!</h1>
+    <p>IP của bạn: <b>{{ ip }}</b></p>
+    <p>Key của bạn (hết hạn sau 24h):<br>
+      <input id="key" value="{{ key }}" readonly>
+    </p>
+    <p class="muted">Hết hạn lúc (ms since epoch): <b>{{ expires_at }}</b></p>
+    <div class="row">
+      <a id="go" href="/access?key={{ key }}">Vào Google Drive</a>
+      <button onclick="navigator.clipboard.writeText('{{ key }}')">Copy key</button>
+    </div>
+  </div>
+</body>
+</html>
